@@ -1,7 +1,6 @@
-const letters = ["A", "B", "C", "D", "E","F","G", "H" ];
+const letters = ["A", "B", "C", "D", "E", "F", "G", "H" ];
 const matrix = getChessMatrix();
 let clickFn;
-console.log(matrix)
 class ChessBoard {
     constructor(idParent, clickFnP) {
         this.parentElem = document.getElementById(idParent);
@@ -12,7 +11,7 @@ class ChessBoard {
     }
 }
 function getTitle() {
-    return `${getRow()}${getEmptyCell()}${getLetters()}</div>`
+    return `${getRow()}${getEmptyCell()}${getLetters()}${getEmptyCell()}</div>`
 }
 function getRow() {
     return `<div class="row">`
@@ -35,8 +34,8 @@ function getContent() {
     return matrix.map((r, i) => `${getChessRow(r,i)}</div>`).join('');
 }
 function getChessRow(row, index) {
-    return `${getRow()}${getCell(index)}${getChessCells(row, index)}
-     ${getCell(index)}`
+    return `${getRow()}${getRowNumber(index)}${getChessCells(row, index)}
+     ${getRowNumber(index)}`
 }
 function getChessCells(row, index) {
     return row.map(getChessCell(index)).join('');
@@ -51,7 +50,7 @@ function getChessCell(index) {
 function getLetters() {
     return letters.map(l => `<div class="col-auto border border-white" >${l}</div>`).join('')
 }
-function getCell(num) {
+function getRowNumber(num) {
     return `<div class="col-auto">${num}</div>`
 }
 
